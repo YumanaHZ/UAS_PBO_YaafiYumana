@@ -4,8 +4,8 @@ require_once 'classes/MahasiswaMandiri.php';
 require_once 'classes/MahasiswaBidikmisi.php';
 require_once 'classes/MahasiswaPrestasi.php';
 
-// Inisialisasi koneksi OOP
-$database = new Database();
+// Inisialisasi koneksi OOP dengan Singleton Pattern
+$database = Database::getInstance();
 $pdo = $database->getConnection();
 
 // Ambil parameter dari URL untuk navigasi (default: dashboard)

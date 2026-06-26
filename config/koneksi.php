@@ -1,13 +1,18 @@
 <?php
 class Database {
-    private $host = '127.0.0.1';
-    private $db   = 'DB_UAS_PBO_TRPL1A_YaafiYumana';
-    private $user = 'root'; // Sesuaikan username database Anda (default xampp: root)
-    private $pass = '';     // Sesuaikan password database Anda (default xampp: kosong)
-    private $charset = 'utf8mb4';
+    // Properti statis untuk menyimpan instance (Singleton Pattern)
+    private static $instance = null;
     private $pdo;
 
-    public function __construct() {
+    // Enkapsulasi kredensial
+    private $host = '127.0.0.1';
+    private $db   = 'DB_UAS_PBO_TRPL1A_YaafiYumana';
+    private $user = 'root';
+    private $pass = '';
+    private $charset = 'utf8mb4';
+
+    // Constructor di-set private agar tidak bisa di-instansiasi berulang kali dengan keyword 'new' di luar class
+    private function __construct() {
         $dsn = "mysql:host=$this->host;dbname=$this->db;charset=$this->charset";
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -22,6 +27,18 @@ class Database {
         }
     }
 
+    // Mencegah cloning objek
+    private function __clone() {}
+
+    // Method statis untuk mendapatkan instance database (Singleton)
+    public static function getInstance() {
+        if (self::$instance == null) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
+    }
+
+    // Getter untuk objek PDO
     public function getConnection() {
         return $this->pdo;
     }
