@@ -18,7 +18,7 @@ class MahasiswaBidikmisi extends Mahasiswa
 
     public function hitungTagihanSemester()
     {
-        // Bidikmisi tidak membayar UKT (atau Rp0)
+        // Bidikmisi tidak membayar UKT (total tagihan = 0, ditanggung negara melalui skema KIP-Kuliah)
         return 0;
     }
 

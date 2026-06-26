@@ -18,8 +18,8 @@ class MahasiswaMandiri extends Mahasiswa
 
     public function hitungTagihanSemester()
     {
-        // Untuk mandiri, tagihan sesuai tarif UKT normal
-        return $this->tarifUktNominal;
+        // Untuk mandiri, tagihan = tarif UKT + 100.000 (biaya operasional kemahasiswaan/praktikum)
+        return $this->tarifUktNominal + 100000;
     }
 
     public function tampilkanSpesifikasiAkademik()

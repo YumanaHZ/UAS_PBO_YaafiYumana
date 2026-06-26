@@ -18,8 +18,8 @@ class MahasiswaPrestasi extends Mahasiswa
 
     public function hitungTagihanSemester()
     {
-        // Prestasi tagihan dibayar penuh instansi, mahasiswa tidak ditagih
-        return 0;
+        // Prestasi mendapat potongan 75%, sehingga mahasiswa cukup membayar 25% dari tarif ukt aslinya
+        return $this->tarifUktNominal * 0.25;
     }
 
     public function tampilkanSpesifikasiAkademik()
